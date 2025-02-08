@@ -28,23 +28,27 @@ MariaDB [mailserver]> desc virtual_domains;
 +-------+-------------+------+-----+---------+----------------+
 2 rows in set (0.002 sec)
 
-MariaDB [mailserver]> desc virtual_users;
-+---------------+--------------+------+-----+---------+----------------+
-| Field         | Type         | Null | Key | Default | Extra          |
-+---------------+--------------+------+-----+---------+----------------+
-| id            | int(11)      | NO   | PRI | NULL    | auto_increment |
-| domain_id     | int(11)      | NO   | MUL | NULL    |                |
-| email         | varchar(100) | NO   | UNI | NULL    |                |
-| password      | varchar(150) | NO   |     | NULL    |                |
-| quota         | bigint(11)   | NO   |     | 0       |                |
-| client_id     | varchar(150) | YES  |     | NULL    |                |
-| client_secret | varchar(75)  | NO   |     | 0       |                |
-| access_token  | varchar(300) | NO   |     | 0       |                |
-| refresh_token | varchar(150) | NO   |     | 0       |                |
-| expiry        | varchar(50)  | NO   |     | 0       |                |
-| project_id    | varchar(50)  | NO   |     | 0       |                |
-+---------------+--------------+------+-----+---------+----------------+
-11 rows in set (0.002 sec)
+MariaDB [mailserver]> desc virtual_users;  NEW table layout
++---------------+------------------+------+-----+---------+----------------+
+| Field         | Type             | Null | Key | Default | Extra          |
++---------------+------------------+------+-----+---------+----------------+
+| id            | int(11)          | NO   | PRI | NULL    | auto_increment |
+| domain_id     | int(11)          | NO   | MUL | NULL    |                |
+| email         | varchar(100)     | NO   | UNI | NULL    |                |
+| password      | varchar(150)     | NO   |     | NULL    |                |
+| quota         | bigint(11)       | NO   |     | 0       |                |
+| client_id     | varchar(150)     | YES  |     | NULL    |                |
+| client_secret | varchar(75)      | NO   |     | 0       |                |
+| access_token  | varchar(300)     | NO   |     | 0       |                |
+| refresh_token | varchar(150)     | NO   |     | 0       |                |
+| expiry        | varchar(50)      | NO   |     | 0       |                |
+| project_id    | varchar(50)      | NO   |     | 0       |                |
+| gid           | int(10) unsigned | YES  |     | 100     |                |
+| uid           | int(10) unsigned | YES  |     | NULL    |                |
+| home          | varchar(100)     | YES  |     | NULL    |                |
++---------------+------------------+------+-----+---------+----------------+
+14 rows in set (0.002 sec)
+
 
 users:
 mailserver select all
